@@ -51,7 +51,7 @@ def index():
             new_cities.append(perevod(i.name))
 
     weather_data = []
-    for city in new_cities:
+    for city in new_cities[::-1]:
         t = get_req(city)
         if t != False:
             weather = {
