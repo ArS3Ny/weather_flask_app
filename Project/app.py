@@ -18,7 +18,7 @@ class City(db.Model):
 
 
 def perevod(city):
-    return translator.translate(f'{city}').text
+    return translator.translate(f'{city}').text.capitalize()
 
 
 def celc(grad):
@@ -36,7 +36,7 @@ def get_req(city):
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
-        new_city = request.form.get('city')
+        new_city = request.form.get('city').lower()
 
         if new_city:
             new_city_obj = City(name=new_city)
